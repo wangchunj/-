@@ -1,3 +1,16 @@
+ Git Base 设置
+   输入
+git config --global user.name "你的用户名"
+git config --global user.email "你的邮箱"
+
+ ssh-keygen -t rsa -C "你的邮箱"
+复制ssh key
+  方法1: 输入 clip < ~/.ssh/id_rsa.pub   会自动复制ssh key，可以直接粘贴
+打开GitHub 进入setting找到ssh key并新建
+然后测试连接是否成功
+输入: ssh -T git@github.com 
+git@github.com:wangchunj/reptile.git
+
 上传到本地缓存
 文件名编码--utf8
 并在此文件夹目录下右键Git Base Here 
@@ -24,13 +37,29 @@ git pull origin master
 然后：git push -u origin master
 在第一次上传的文件夹下
 
-然后修改文件
-输入git status查看状态
+传到git上的不同库上：
+先给他链接coding的远程仓库
+git remote add 代号 仓库地址
+例如：我为了区分方便，
+把coding上仓库地址代号称之为coding，所以我就输入如下：
+git remote add coding https://git.coding.net/LolitaSian/LolitaSian.git
+在git bash中输入git remote -v
+可以查看本地仓库现在连接了那个远程仓库
+然后按照相同方法添加第二个远程仓库，
+我就添加码云（gitee）上的仓库，为了区分，
+代称取gitee，输入git remote add gitee +gitee仓库的地址
+刚才我链接的两个远程仓库，推得时候就要这样写了：
+git push coding master 
+git push gitee master
+
+在本地修改后上传到github:
 输入git diff查看改变
-
 撤销更改 git checkout -- . 
-再次打开文件已经修改
-
 再次修改文件并上传
+版本回退命令 : git reset --hard 版本号前7位
+输入 git reflog  查看之前版本
+再次输入 git reset --hard 版本号前7位  恢复到的版本
+输入命令 git clean -xf  会删除未跟踪的文件 就是没有上传过的文件
 
-看到两个版本了
+On branch master
+Your branch is up to date with 'origin/master'.
